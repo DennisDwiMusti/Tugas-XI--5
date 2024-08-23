@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.container {
+  width: 50%;
+  margin: 50px auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.input-field {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.radio-group {
+  margin-bottom: 10px;
+}
+
+.radio-button {
+  margin-right: 10px;
+}
+
+.details-section {
+  display: none;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Formulir Data Ayah</h1>
+
+    <div class="form-group">
+    <label class="label" for="status-ayah">Status Ayah:</label>
+        <div class="radio-group">
+            <input type="radio" id="status-ayah-hidup" name="status-ayah" value="hidup" onclick="showDetails(this)">
+            <label class="radio-button" for="status-ayah-hidup">Masih Hidup</label>
+        </div>
+        <div class="radio-group">
+            <input type="radio" id="status-ayah-meninggal" name="status-ayah" value="meninggal" onclick="showDetails(this)">
+            <label class="radio-button" for="status-ayah-meninggal">Meninggal</label>
+        </div>
+        <div class="radio-group">
+            <input type="radio" id="status-ayah-tidak-diketahui" name="status-ayah" value="tidak-diketahui" onclick="showDetails(this)">
+            <label class="radio-button" for="status-ayah-tidak-diketahui">Tidak Diketahui</label>
+        </div>
+    </div>
+
+    <div class="form-group" >
+        <label class="label" for="pendidikan-ayah">Pendidikan Ayah:</label>
+        <select class="input-field" id="pendidikan-ayah">
+        <option value="">Pilih</option>
+        <option value="SD">SD</option>
+        <option value="SMP">SMP</option>
+        <option value="SMA">SMA</option>
+        <option value="D3">D3</option>
+            <option value="S1">S1</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label class="label" for="pekerjaan-ayah">Pekerjaan Ayah:</label>
+        <input type="text" class="input-field" id="pekerjaan-ayah" placeholder="Pilih">
+    </div>
+
+    <div class="form-group">
+        <label class="label" for="deskripsi-pekerjaan">Deskripsi Pekerjaan Ayah:</label>
+        <textarea class="input-field" id="deskripsi-pekerjaan" placeholder="Tuliskan nama spesifikasi pekerjaan"></textarea>
+    </div>
+
+    <div class="form-group">
+        <label class="label" for="penghasilan-ayah">Total Penghasilan Ayah Per Bulan:</label>
+        <input type="number" class="input-field" id="penghasilan-ayah" placeholder="Rp.">
+    </div>
+  
+    <div class="form-group" id="detail-ayah-hidup">
+        <label class="label">Detail Ayah bekerja, berapa lama sudah bekerja, kondisi kesehatan, dan karir profesinya</label>
+        <input type="text" class="input-field" id="pekerjaan-ayah" >
+    </div>
+
+  <div class="form-group" id="detail-ayah-meninggal">
+    <label class="label">Detail pekerjaan ayah semasa hidup</label>
+    <input type="text" class="input-field" id="pekerjaan-ayah">
+  </div>
+
+  <button onclick="showDetails()">Submit</button>
+</div>
+
+<script>
+function showDetails() {
+  var statusAyah = document.querySelector('input[name="status-ayah"]:checked').value;
+
+  if (statusAyah === 'hidup') {
+    document.getElementById('detail-ayah-hidup').style.display = 'block';
+    document.getElementById('detail-ayah-meninggal').style.display = 'none';
+  } else if (statusAyah === 'meninggal') {
+    document.getElementById('detail-ayah-hidup').style.display = 'none';
+    document.getElementById('detail-ayah-meninggal').style.display = 'block';
+  } else {
+    document.getElementById('detail-ayah-hidup').style.display = 'none';
+    document.getElementById('detail-ayah-meninggal').style.display = 'none';
+  }
+}
+</script>
+
+</body>
+</html>
